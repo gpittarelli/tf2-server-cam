@@ -1,36 +1,26 @@
 # tf2-server-cam
 
-FIXME: description
+A simple project which queries the Source master servers and fetches
+information for all visible servers.
 
 ## Installation
 
-Download from http://example.com/FIXME.
+TODO:
+
+Use leiningen.
 
 ## Usage
 
-FIXME: explanation
+Running the following command will outpout a
 
-    $ java -jar tf2-server-cam-0.1.0-standalone.jar [args]
+    $ java -jar tf2-server-cam-0.1.0-standalone.jar
 
 ## Options
 
-FIXME: listing of options this app accepts.
-
-## Examples
-
-...
-
-### Bugs
-
-...
-
-### Any Other Sections
-### That You Think
-### Might be Useful
+TODO:
 
 ## License
 
-Copyright © 2015 FIXME
+Copyright © 2015 George Pittarelli
 
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+Distributed under the MIT License.
