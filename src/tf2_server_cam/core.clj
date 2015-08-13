@@ -30,13 +30,14 @@
                   (recur rest-ips))
               servers)))]
     (->> servers
-         (map #(str/split % ":"))
+         (map #(str/split % #":"))
          (map (fn [[ip port]]
                 {:ip ip
                  :port port
                  :info (ssq/info ip port)
                  :rules (ssq/rules ip port)
-                 :players (ssq/players ip port)})))))
+                 :players (ssq/players ip port)}))
+         doall)))
 
 (defn -main [& args]
   (let [region->servers
