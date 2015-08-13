@@ -17,7 +17,6 @@
   (let [servers
         (loop [ips (cycle master-ips)]
           (let [[cur-ip & rest-ips] ips
-                t (println "try" region cur-ip)
                 servers
                 @(ssq/master cur-ip 27011
                              region "\\appid\\440"
