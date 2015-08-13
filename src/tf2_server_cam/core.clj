@@ -53,9 +53,11 @@
          region->servers
          (keys region->servers)
          (fn [servers-per-region]
-           (map #(map-values % [:info :rules :players]
-                             (comp #(dissoc %1 :exception)
-                                   deref))
+           (map (fn [server-data]
+                  (map-values server-data
+                              [:info :rules :players]
+                              (comp #(dissoc %1 :exception)
+                                    deref)))
                 servers-per-region)))]
     (prn region->servers)
     (shutdown-agents)))
