@@ -13,6 +13,10 @@
        vec
        (map #(.getHostAddress %))))
 
+(defn map-values
+  [m ks f]
+  (reduce #(update-in %1 [%2] f) m ks))
+
 (defn- list-tf2-servers [region]
   (let [servers
         (loop [ips (cycle master-ips)]
@@ -39,6 +43,12 @@
         (zipmap regions
                 (->> regions
                      (map list-tf2-servers)
-                     doall))]
+                     doall))
+
+        region->servers
+        (map-values
+         region->servers
+         (keys region->servers)
+         #(map-values o [:info :rules :players] deref))]
     (println region->servers)
     (shutdown-agents)))
