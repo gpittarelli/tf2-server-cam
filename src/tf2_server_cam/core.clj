@@ -33,6 +33,7 @@
          (map #(str/split % #":"))
          (map (fn [[ip port]]
                 (let [port (Integer. port)]
+                  (Thread/sleep 100)
                   {:ip ip
                    :port port
                    :info (ssq/info ip port)
