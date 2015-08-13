@@ -49,6 +49,6 @@
         (map-values
          region->servers
          (keys region->servers)
-         #(map-values o [:info :rules :players] deref))]
+         #(map-values % [:info :rules :players] deref))]
     (println region->servers)
     (shutdown-agents)))
