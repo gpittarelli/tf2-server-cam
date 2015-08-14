@@ -24,16 +24,16 @@
                 servers
                 @(ssq/master cur-ip 27011
                              region "\\appid\\440"
-                             :timeout 20000 :socket-timeout 20000)]
+                             :timeout 15000 :socket-timeout 15000)]
             (if (:err servers)
-              (do (Thread/sleep 30000)
+              (do (Thread/sleep 20000)
                   (recur rest-ips))
               servers)))]
     (->> servers
          (map #(str/split % #":"))
          (map (fn [[ip port]]
                 (let [port (Integer. port)]
-                  (Thread/sleep 100)
+                  (Thread/sleep 50)
                   {:ip ip
                    :port port
                    :info (ssq/info ip port)
