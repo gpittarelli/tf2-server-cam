@@ -56,7 +56,10 @@
            (map (fn [server-data]
                   (map-values server-data
                               [:info :rules :players]
-                              (comp #(dissoc %1 :exception)
+                              (comp #(if (and (map? %1)
+                                              (contains? %1 :exception))
+                                       (dissoc %1 :exception)
+                                       %1)
                                     deref)))
                 servers-per-region)))]
     (prn region->servers)
